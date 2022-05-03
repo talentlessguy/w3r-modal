@@ -1,0 +1,6 @@
+export { Modal } from './Modal'
+export { initWalletHooks, useLastWallet } from './useWalletModal'
+export type { Wallet } from './utils/wallets'
+export type { Theme } from './css/sprinkles.css'
+export { cssStringFromTheme } from './css/cssStringFromTheme'
+export { defaultTheme } from './css/sprinkles.css'

@@ -1,0 +1,83 @@
+---
+title: API
+---
+
+## `initWalletHooks`
+
+Statically initializes `useWalletModal` and `useWeb3State` hooks.
+
+```js
+import { initWalletHooks } from 'w3r-modal'
+
+import { wallets } from './wallets'
+
+export const { useWalletModal, useWeb3State } = initWalletHooks({ wallets })
+```
+
+#### Options
+
+- `wallets` - array of wallets to be pick from
+- `autoConnect` (optional) - connect on page load
+- `ensProvider` (optional) - custom ENS provider. if undefined, then web3 provider is used
+
+## `useWalletModal`
+
+Web3 wallet hook to manage the connection process. Can be used with any modal.
+
+```jsx
+import { useWalletModal } from '../hooks'
+import { wallets } from '../wallets'
+import { Modal } from 'my-custom-modal'
+
+export default function Page() {
+  const { isConnected, isConnecting, setConnecting, connect, disconnect, address, connector, ens } = useWalletModal()
+
+  return (
+    <main>
+      <button
+        onClick={async () => {
+          if (isConnected) disconnect()
+          else setConnecting(true)
+        }}
+      >
+        {isConnected ? 'disconnect' : 'connect'}
+      </button>
+      {isConnected ? (
+        <p>
+          Connected to {ens || address.slice(0, 8)} with {connector.constructor.name}
+        </p>
+      ) : null}
+      {isConnecting && <Modal {...{ setConnecting, connect, wallets }} />}
+    </main>
+  )
+}
+```
+
+## `useWeb3State`
+
+Web3 state hook without the modal functionality, only to get the state. If `autoConnect` is enabled, state is set on page load.
+
+```jsx
+import { useWeb3State } from '../hooks'
+
+export default function Page() {
+  const { isConnected, address, ens, ...state } = useWeb3State()
+
+  return <>{isConnected ? ens || address : null}</>
+}
+```
+
+## `useLastWallet`
+
+A Zustand hook that contains the last selected wallet information (name and logo) and is used by `useWeb3State` for auto connecting.
+
+```jsx
+import { useLastWallet } from 'w3r-modal'
+
+export default function Page() {
+  const { isConnected } = useWeb3State()
+  const wallet = useLastWallet()
+
+  return <>{isConnected ? <>{wallet.name}</> : 'N/A'}</>
+}
+```

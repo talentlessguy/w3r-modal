@@ -1,0 +1,41 @@
+---
+title: Tips
+---
+
+## Handle invalid network
+
+```jsx
+import { Modal } from 'w3r-modal'
+import { useMemo } from 'react'
+import { useWeb3State } from '../hooks'
+import { wallets } from '../wallets'
+
+export function Example(props: JSX.IntrinsicElements['div']) {
+  const { isConnected, connect, disconnect, error } = useWeb3State()
+
+  const isInvalidNetwork = useMemo(() => {
+    return error?.name === 'ChainIdNotAllowedError'
+  }, [error])
+
+  return (
+    <div className={styles.row} {...props}>
+      <button
+        className={styles.button}
+        onClick={async () => {
+          if (isInvalidNetwork) {
+            // @ts-ignore
+            await window.ethereum?.send('wallet_switchEthereumChain', [
+              {
+                chainId: `0x1`
+              }
+            ])
+          } else if (isConnected) disconnect()
+          else connect(wallets[0])
+        }}
+      >
+        {isInvalidNetwork ? 'switch to ethereum' : isConnected ? 'disconnect' : 'connect'}
+      </button>
+    </div>
+  )
+}
+```

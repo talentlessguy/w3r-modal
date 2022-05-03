@@ -1,0 +1,121 @@
+---
+title: Get Started
+---
+
+Install necessary dependencies
+
+```sh
+pnpm i react w3r-modal @web3-react/core@beta @web3-react/types@beta
+```
+
+Install wallets connectors by your choice
+
+```sh
+pnpm i @web3-react/metamask@beta @web3-react/walletconnect@beta
+```
+
+Initialize connectors:
+
+```ts
+import { initializeConnector as init } from '@web3-react/core'
+import { MetaMask } from '@web3-react/metamask'
+import { WalletConnect } from '@web3-react/walletconnect'
+import type { Connector } from '@web3-react/types'
+import type { Web3ReactHooks } from '@web3-react/core'
+
+export const [metaMask, metaMaskHooks] = init<MetaMask>((actions) => new MetaMask(actions), [1])
+
+export const [walletConnect, walletConnectHooks] = init<WalletConnect>(
+  (actions) =>
+    new WalletConnect(actions, {
+      rpc: {
+        1: 'https://cloudflare-eth.com'
+      }
+    }),
+  [1]
+)
+
+export const connectors: [Connector, Web3ReactHooks][] = [
+  [metaMask, metaMaskHooks],
+  [walletConnect, walletConnectHooks]
+]
+```
+
+Initialize wallets (with names, connectors and icons):
+
+```ts
+import { Wallet } from 'w3r-modal'
+import { connectors } from './connectors'
+
+export const wallets: Wallet[] = [
+  {
+    name: 'MetaMask',
+    connector: connectors[0],
+    logoURI: 'https://www.genie.xyz/logos/metamask.png'
+  },
+  {
+    name: 'WalletConnect',
+    connector: connectors[1],
+    logoURI: 'https://www.genie.xyz/logos/wc.png'
+  }
+]
+```
+
+Create an `_app.jsx` file and setup a modal theme:
+
+```jsx
+import type { AppProps } from 'next/app'
+import 'w3r-modal/index.css'
+import { cssStringFromTheme, defaultTheme } from 'w3r-modal'
+
+const App = ({ pageProps, Component }) => {
+  return (
+    <>
+      <style jsx global>
+        {`
+          :root {
+            ${cssStringFromTheme(defaultTheme)}
+          }
+        `}
+      </style>
+      <Component {...pageProps} />
+    </>
+  )
+}
+
+export default App
+```
+
+Now the library is ready to use! Initialize `w3r-modal` hooks in your app:
+
+```jsx
+import { Modal, initWalletHooks } from 'w3r-modal'
+import { useMemo } from 'react'
+import { wallets } from '../wallets'
+
+const { useWalletModal } = initWalletHooks({ wallets })
+
+export default function Page() {
+  const { isConnected, isConnecting, setConnecting, connect, disconnect, address, connector, ens } = useWalletModal()
+
+  return (
+    <main>
+      <button
+        onClick={async () => {
+          if (isConnected) disconnect()
+          else setConnecting(true)
+        }}
+      >
+        {isConnected ? 'disconnect' : 'connect'}
+      </button>
+      {isConnected ? (
+        <p>
+          Connected to {ens || address.slice(0, 8)} with {connector.constructor.name}
+        </p>
+      ) : null}
+
+      {isConnecting && <Modal {...{ isConnecting, setConnecting, connect, wallets }} />}
+    </main>
+  )
+}
+```

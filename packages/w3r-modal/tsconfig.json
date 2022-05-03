@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2021",
+    "declaration": true,
+    "declarationDir": "dist",
+    "preserveSymlinks": true,
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["src"]
+}

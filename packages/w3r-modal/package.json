@@ -1,0 +1,62 @@
+{
+  "name": "w3r-modal",
+  "version": "0.0.0",
+  "description": "Simple Web3 wallet modal library.",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./index.css": "./dist/index.css"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "node build.js",
+    "postbuild": "tsc --emitDeclarationOnly",
+    "prebuild": "rm -rf dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talentlessguy/w3r-modal.git"
+  },
+  "keywords": [
+    "ethereum",
+    "web3",
+    "wallet",
+    "react",
+    "dapp"
+  ],
+  "author": "v1rtl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talentlessguy/w3r-modal/issues"
+  },
+  "homepage": "https://github.com/talentlessguy/w3r-modal#readme",
+  "devDependencies": {
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.0",
+    "@vanilla-extract/css": "^1.7.0",
+    "@vanilla-extract/esbuild-plugin": "^2.0.3",
+    "@web3-react/core": "^8.0.24-beta.0",
+    "@web3-react/types": "^8.0.13-beta.0",
+    "autoprefixer": "^10.4.5",
+    "esbuild": "^0.14.38",
+    "postcss": "^8.4.12",
+    "react": ">=18",
+    "typescript": "^4.6.3"
+  },
+  "peerDependencies": {
+    "@web3-react/core": "^8.0.24-beta.0",
+    "@web3-react/types": "^8.0.13-beta.0",
+    "react": ">=17"
+  },
+  "dependencies": {
+    "@vanilla-extract/dynamic": ">=2",
+    "@vanilla-extract/sprinkles": ">=1.4",
+    "focus-visible": "^5.2.0",
+    "react-dom": ">=18",
+    "react-merge-refs": ">=1",
+    "zustand": "4.0.0-rc.0"
+  }
+}

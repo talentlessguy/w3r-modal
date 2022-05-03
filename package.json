@@ -1,0 +1,12 @@
+{
+  "name": "w3r-modal",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talentlessguy/w3r-modal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/talentlessguy/w3r-modal/issues"
+  },
+  "homepage": "https://github.com/talentlessguy/w3r-modal#readme"
+}
