@@ -3,7 +3,7 @@
   <h3>w3r-modal</h3>
 </div>
 
-[![Version][v-badge-url]][npm-url] [![Downloads][dl-badge-url]][npm-url] [![GitHub Workflow Status][gh-actions-img]][github-actions] [![Codecov][cov-badge-url]][cov-url]
+[![Version][v-badge-url]][npm-url] [![Downloads][dl-badge-url]][npm-url] [![GitHub Workflow Status][checks-img]][checks] [![Codecov][cov-badge-url]][cov-url]
 
 Simple Web3 wallet modal library.
 
@@ -53,5 +53,5 @@ export default function Page() {
 [cov-badge-url]: https://img.shields.io/coveralls/github/tinyhttp/w3r-modal?style=for-the-badge&color=F55A5A
 [cov-url]: https://coveralls.io/github/tinyhttp/w3r-modal
 [dl-badge-url]: https://img.shields.io/npm/dt/w3r-modal?style=for-the-badge&color=F55A5A
-[github-actions]: https://github.com/tinyhttp/w3r-modal/actions
-[gh-actions-img]: https://img.shields.io/github/workflow/status/tinyhttp/w3r-modal/CI?style=for-the-badge&color=F55A5A&label=&logo=github
+[checks]: https://app.buddy.works/v1rtl/w3r-modal/pipelines/pipeline/389121
+[checks-img]: https://img.shields.io/github/checks-status/talentlessguy/w3r-modal/master?style=for-the-badge
