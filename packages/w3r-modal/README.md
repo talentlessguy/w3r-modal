@@ -1,9 +1,11 @@
 <div align="center">
   <img src="https://bafkreidnb2tkp7mtdi2a6lfk6eijvddak373dpyomiel5pvfv6qvrwewfi.ipfs.dweb.link" alt="w3r-modal" />
   <h3>w3r-modal</h3>
-</div>
-
+  <br />
+  
 [![Version][v-badge-url]][npm-url] [![Downloads][dl-badge-url]][npm-url] [![GitHub Workflow Status][checks-img]][checks] [![Codecov][cov-badge-url]][cov-url]
+
+</div>
 
 Simple Web3 wallet modal library.
 
