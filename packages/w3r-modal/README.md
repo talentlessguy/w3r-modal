@@ -53,5 +53,5 @@ export default function Page() {
 [cov-badge-url]: https://img.shields.io/coveralls/github/tinyhttp/w3r-modal?style=for-the-badge&color=F55A5A
 [cov-url]: https://coveralls.io/github/tinyhttp/w3r-modal
 [dl-badge-url]: https://img.shields.io/npm/dt/w3r-modal?style=for-the-badge&color=F55A5A
-[checks]: https://app.buddy.works/v1rtl/w3r-modal/pipelines/pipeline/389121
+[checks]: https://app.buddy.works/v1rtl/w3r-modal/pipelines/pipeline/389131
 [checks-img]: https://img.shields.io/github/checks-status/talentlessguy/w3r-modal/master?style=for-the-badge
