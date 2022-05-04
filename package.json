@@ -8,5 +8,10 @@
   "bugs": {
     "url": "https://github.com/talentlessguy/w3r-modal/issues"
   },
-  "homepage": "https://github.com/talentlessguy/w3r-modal#readme"
+  "homepage": "https://github.com/talentlessguy/w3r-modal#readme",
+  "devDependencies": {
+    "@types/node": "^17.0.29",
+    "@web3-react/metamask": "^8.0.20-beta.0",
+    "@web3-react/walletconnect": "^8.0.27-beta.0"
+  }
 }

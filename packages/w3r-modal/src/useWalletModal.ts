@@ -77,7 +77,7 @@ export const initWalletHooks = ({
     const address = useSelectedAccount(connector)
     const isConnected = useSelectedIsActive(connector)
     const provider = useSelectedProvider(connector)
-    const ens = useSelectedENSName(connector, ensProvider || provider)
+    const ens = useSelectedENSName(connector, (ensProvider as any) || provider)
     const isActivating = useSelectedIsActivating(connector)
 
     const disconnect = async () => {
@@ -111,9 +111,9 @@ export const initWalletHooks = ({
 
     const [isConnecting, setConnecting] = useState(false)
 
-    const connect = async (w: Wallet) => {
+    const connect = async (w: Wallet, options?: unknown) => {
       setLastWallet({ name: w.name, logoURI: w.logoURI })
-      await w.connector[0].activate()
+      await w.connector[0].activate(options)
     }
 
     useLazyEffect(() => {
