@@ -76,6 +76,7 @@ importers:
       '@vanilla-extract/next-plugin': ^2.0.2
       '@walletconnect/ethereum-provider': ^1.7.8
       '@web3-react/core': ^8.0.25-beta.0
+      '@web3-react/store': 8.0.22-beta.0
       '@web3-react/types': ^8.0.13-beta.0
       next: ^12.1.5
       next-mdx-remote: ^4.0.3
@@ -94,6 +95,7 @@ importers:
       '@vanilla-extract/next-plugin': 2.0.2_next@12.1.6
       '@walletconnect/ethereum-provider': 1.7.8
       '@web3-react/core': 8.0.25-beta.0_react@18.1.0
+      '@web3-react/store': 8.0.22-beta.0_react@18.1.0
       '@web3-react/types': 8.0.13-beta.0_react@18.1.0
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
       next-mdx-remote: 4.0.3_ef5jwxihqo6n7gxfmzogljlgcm
@@ -996,6 +998,17 @@ packages:
       - immer
       - react
 
+  /@web3-react/store/8.0.22-beta.0_react@18.1.0:
+    resolution: {integrity: sha512-8POKnRntMA+8aUCGwMcPV32PM9A+CGEu1Eha7PKU5uaMrNMwf6eIufpm0pa9FxDZtk5n8lFCfGed8DApwiUvjw==}
+    dependencies:
+      '@ethersproject/address': 5.6.0
+      '@web3-react/types': 8.0.17-beta.0_react@18.1.0
+      zustand: 4.0.0-rc.0_react@18.1.0
+    transitivePeerDependencies:
+      - immer
+      - react
+    dev: false
+
   /@web3-react/types/8.0.13-beta.0:
     resolution: {integrity: sha512-QFMQWJfMvFBm7Cpc3/ijL2gmjdYVeshpg1KGIgGhgeZem3AIVBt1GmnjLrl9Z8kl1MFDdvLWInWdX0EI7Tx4rQ==}
     dependencies:
@@ -1012,6 +1025,15 @@ packages:
     transitivePeerDependencies:
       - immer
       - react
+
+  /@web3-react/types/8.0.17-beta.0_react@18.1.0:
+    resolution: {integrity: sha512-5zh+BrykylyN29P18/rNPFVVOI4Go/jYLwl5a/55eb5X1wgCfPU62ZBiVeKIOWBCwJ558uie31p909xJjeE2ig==}
+    dependencies:
+      zustand: 4.0.0-rc.0_react@18.1.0
+    transitivePeerDependencies:
+      - immer
+      - react
+    dev: false
 
   /@web3-react/walletconnect/8.0.27-beta.0:
     resolution: {integrity: sha512-zWPqMSSP+upVe7hMEz7oiAqy6YxNijSWQhPydeGsq5smyb7v9k4XFvtLWXITJWaC7uMzQ6cJ3CWJ39fVB8zACw==}

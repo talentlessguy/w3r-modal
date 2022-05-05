@@ -16,6 +16,7 @@
     "@vanilla-extract/next-plugin": "^2.0.2",
     "@walletconnect/ethereum-provider": "^1.7.8",
     "@web3-react/core": "^8.0.25-beta.0",
+    "@web3-react/store": "8.0.22-beta.0",
     "@web3-react/types": "^8.0.13-beta.0",
     "next": "^12.1.5",
     "next-mdx-remote": "^4.0.3",

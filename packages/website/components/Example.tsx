@@ -4,13 +4,14 @@ import * as styles from './Example.css'
 import { useWalletModal } from '../hooks'
 import { wallets } from '../wallets'
 import { useLastWallet } from 'w3r-modal'
+import type { ChainIdNotAllowedError } from '@web3-react/store'
 
 export function Example(props: JSX.IntrinsicElements['div']) {
   const { isConnected, isConnecting, setConnecting, connect, disconnect, address, error, ens } = useWalletModal()
   const wallet = useLastWallet((s) => s.lastWallet)
 
   const isInvalidNetwork = useMemo(() => {
-    return error?.name === 'ChainIdNotAllowedError'
+    return (error as ChainIdNotAllowedError)?.chainId
   }, [error])
 
   return (
@@ -32,7 +33,7 @@ export function Example(props: JSX.IntrinsicElements['div']) {
         {isInvalidNetwork ? 'switch to ethereum' : isConnected ? 'disconnect' : 'connect'}
       </button>
 
-      {address ? (
+      {isConnected ? (
         <div className={styles.preview}>
           <span className={styles.address}>{ens || address?.slice(0, 8)}</span>
           <div className={styles.wallet}>

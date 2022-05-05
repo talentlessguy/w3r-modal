@@ -4,17 +4,20 @@ title: Tips
 
 ## Handle invalid network
 
-```jsx
+Since errors get minified in production, the only way to know that the error is coming from an invalid network, is to check if `chainId` property exists.
+
+```tsx
 import { Modal } from 'w3r-modal'
 import { useMemo } from 'react'
 import { useWeb3State } from '../hooks'
 import { wallets } from '../wallets'
+import type { ChainIdNotAllowedError } from '@web3-react/store'
 
 export function Example(props: JSX.IntrinsicElements['div']) {
   const { isConnected, connect, disconnect, error } = useWeb3State()
 
   const isInvalidNetwork = useMemo(() => {
-    return error?.name === 'ChainIdNotAllowedError'
+    return (error as ChainIdNotAllowedError)?.chainId
   }, [error])
 
   return (

@@ -114,14 +114,13 @@ export const initWalletHooks = ({
     const connect = async (w: Wallet, options?: unknown) => {
       setLastWallet({ name: w.name, logoURI: w.logoURI })
       await w.connector[0].activate(options)
+      setConnecting(false)
     }
 
     useLazyEffect(() => {
       if (!isConnected && !error) {
         // clean up storage if user disconnects from metamask extension
         disconnect()
-      } else if (isConnected) {
-        setConnecting(false)
       }
     }, [isConnected])
 

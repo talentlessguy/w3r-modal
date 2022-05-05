@@ -1,4 +1,4 @@
-import React, { Dispatch, useCallback, useRef } from 'react'
+import React, { Dispatch, useCallback, useEffect, useRef, useState } from 'react'
 import { Dialog } from './Dialog'
 import * as styles from './Modal.css'
 import { CloseIcon } from './icons'
@@ -53,6 +53,12 @@ export const Modal = ({ classNames, connect, isConnecting, setConnecting, wallet
 
   const stopConnecting = useCallback(() => setConnecting(false), [setConnecting])
 
+  const [isMetaMaskSupported, setMetaMaskSupported] = useState(true)
+
+  useEffect(() => {
+    setMetaMaskSupported(!!(window as any).ethereum)
+  }, [])
+
   return (
     <Dialog
       classNames={{ content: styles.dialog }}
@@ -77,9 +83,11 @@ export const Modal = ({ classNames, connect, isConnecting, setConnecting, wallet
         </div>
 
         <div className={clsx(styles.Wallets, classNames?.wallets)}>
-          {wallets.map((c) => {
-            return <WalletIcon connect={connect} key={c.name} wallet={c} />
-          })}
+          {wallets
+            .filter((x) => (x.name === 'MetaMask' ? isMetaMaskSupported : true))
+            .map((c) => {
+              return <WalletIcon connect={connect} key={c.name} wallet={c} />
+            })}
         </div>
       </div>
     </Dialog>
