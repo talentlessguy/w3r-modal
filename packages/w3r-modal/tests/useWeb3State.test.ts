@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react'
 import { MockEIP1193Provider, MOCK_ADDRESS, reset, setup, wallets } from '../testUtils'
-import { initWalletHooks } from '../src/useWalletModal'
+import { initWalletHooks } from '../src/index'
 import { suite } from 'uvu'
 import * as assert from 'assert/strict'
 

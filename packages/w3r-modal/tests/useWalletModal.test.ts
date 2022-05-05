@@ -2,7 +2,7 @@ import { suite } from 'uvu'
 import * as assert from 'assert/strict'
 import { act, renderHook } from '@testing-library/react'
 import { MOCK_ADDRESS, wallets, setup, reset, MockEIP1193Provider } from '../testUtils'
-import { initWalletHooks } from '../src/useWalletModal'
+import { initWalletHooks } from '../src/index'
 
 const { useWalletModal } = initWalletHooks({ wallets })
 
