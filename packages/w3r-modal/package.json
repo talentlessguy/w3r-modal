@@ -18,7 +18,7 @@
     "test": "tsm node_modules/uvu/bin.js tests",
     "test:coverage": "c8 --include=src pnpm test",
     "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
-    "prepublishOnly": "build"
+    "prepublishOnly": "pnpm build"
   },
   "repository": {
     "type": "git",
