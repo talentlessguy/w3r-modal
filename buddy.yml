@@ -1,0 +1,32 @@
+- pipeline: "build"
+  on: "EVENT"
+  events:
+    - type: "PUSH"
+      refs:
+        - "refs/heads/master"
+  priority: "NORMAL"
+  fail_on_prepare_env_warning: true
+  actions:
+    - action: "Execute pnpm build"
+      type: "BUILD"
+      working_directory: "/buddy/w3r-modal"
+      main_service_name: "Main"
+      docker_image_name: "library/node"
+      docker_image_tag: "16"
+      execute_commands:
+        - "pnpm install"
+        - "cd packages/w3r-modal"
+        - "pnpm build"
+        - "pnpm test:coverage"
+        - "pnpm test:report"
+        - "cd ../.."
+        - "./codecov"
+      setup_commands:
+        - "corepack enable"
+        - "corepack prepare pnpm@7.0.0 --activate"
+        - "curl -Os https://uploader.codecov.io/latest/linux/codecov"
+        - "chmod +x codecov"
+      volume_mappings:
+        - "/:/buddy/w3r-modal"
+      cache_base_image: true
+      shell: "BASH"
