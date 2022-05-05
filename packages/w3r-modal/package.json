@@ -1,6 +1,6 @@
 {
   "name": "w3r-modal",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Simple Web3 wallet modal library.",
   "type": "module",
   "exports": {
@@ -17,7 +17,8 @@
     "prebuild": "rm -rf dist",
     "test": "tsm node_modules/uvu/bin.js tests",
     "test:coverage": "c8 --include=src pnpm test",
-    "test:report": "c8 report --reporter=text-lcov > coverage.lcov"
+    "test:report": "c8 report --reporter=text-lcov > coverage.lcov",
+    "prepublishOnly": "build"
   },
   "repository": {
     "type": "git",
