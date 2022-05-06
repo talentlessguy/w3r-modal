@@ -18,14 +18,15 @@ type ConnectorCtor = new (actions: Actions, ...args: unknown[]) => Connector
 export const prepareConnectors = <T extends ConnectorCtor | [ConnectorCtor, Record<string, unknown>]>(
   connectors: T[],
   allowedChainIds?: number[]
-) => {
+): [Connector, Web3ReactHooks][] => {
   return connectors.map((ConnectorClass) => {
-    return initializeConnector(
+    const [connector, hooks] = initializeConnector(
       (actions) =>
         Array.isArray(ConnectorClass)
           ? new ConnectorClass[0](actions, ConnectorClass[1])
           : new (ConnectorClass as ConnectorCtor)(actions),
       allowedChainIds
     )
+    return [connector, hooks]
   })
 }
