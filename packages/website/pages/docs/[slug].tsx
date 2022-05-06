@@ -10,6 +10,7 @@ import remarkGfm from 'remark-gfm'
 import dynamic from 'next/dynamic'
 import { Contents } from '../../components/Contents'
 import { useMemo } from 'react'
+import Head from 'next/head'
 
 type PageProps = {
   source: string
@@ -41,6 +42,10 @@ export default function DocsPage({ source, slug, frontmatter, slugs }: PageProps
 
   return (
     <main className={styles.main}>
+      <Head>
+        <title>{frontmatter.title} | w3r-modal</title>
+        <meta property="og:title" content={`${frontmatter.title} | w3r-modal`} />
+      </Head>
       <Contents links={generatedLinks} currentPage={slug} />
       <div>
         <h1>{frontmatter.title}</h1>

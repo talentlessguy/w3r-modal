@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
@@ -7,6 +8,10 @@ import * as styles from './index.css'
 export default function Index() {
   return (
     <main className={styles.main}>
+      <Head>
+        <title>w3r-modal</title>
+        <meta property="og:title" content="w3r-modal" />
+      </Head>
       <Image src="/logo.png" height={232} width={292} alt="Logo" />
       <h1 className={styles.h1}>w3r-modal</h1>
       <span className={styles.caption}>Simple Web3 wallet modal library.</span>

@@ -14,10 +14,8 @@ const App = ({ pageProps, Component }: AppProps) => {
   return (
     <>
       <Head>
-        <title>w3r-modal</title>
         <meta property="og:url" content="https://www.w3r-modal.vercel.app" />
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="w3r-modal" />
         <meta property="og:image" content="/preview.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="http://www.genie.xyz/preview.png" />
