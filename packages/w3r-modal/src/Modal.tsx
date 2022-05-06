@@ -3,7 +3,7 @@ import { Dialog } from './Dialog'
 import * as styles from './Modal.css'
 import { CloseIcon } from './icons'
 import { clsx } from './clsx'
-import { Wallet } from './utils/wallets'
+import type { Wallet } from './utils'
 
 export interface ModalProps {
   classNames?: Partial<{

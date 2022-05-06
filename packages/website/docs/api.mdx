@@ -2,6 +2,22 @@
 title: API
 ---
 
+## `prepareConnectors`
+
+Simplifies the process of initializing web3-react connectors.
+It is also possible to pass connector's options in an array where first value is the connector and the other is it's options.
+
+```js
+import { MetaMask } from '@web3-react/metamask'
+import { WalletConnect } from '@web3-react/walletconnect'
+import { prepareConnectors } from 'w3r-modal'
+
+export const connectors = prepareConnectors(
+  [MetaMask, [WalletConnect, { rpc: { 1: 'https://cloudflare-eth.com' } }]],
+  [1]
+)
+```
+
 ## `initWalletHooks`
 
 Statically initializes `useWalletModal` and `useWeb3State` hooks.
@@ -20,7 +36,7 @@ export const { useWalletModal, useWeb3State } = initWalletHooks({ wallets })
 - `autoConnect` (optional) - connect on page load
 - `ensProvider` (optional) - custom ENS provider. if undefined, then web3 provider is used
 
-## `useWalletModal`
+### `useWalletModal`
 
 Web3 wallet hook to manage the connection process. Can be used with any modal.
 
@@ -53,7 +69,7 @@ export default function Page() {
 }
 ```
 
-## `useWeb3State`
+### `useWeb3State`
 
 Web3 state hook without the modal functionality, only to get the state. If `autoConnect` is enabled, state is set on page load.
 

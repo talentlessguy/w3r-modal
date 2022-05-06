@@ -1,4 +1,4 @@
-import { Wallet } from './utils/wallets'
+import type { Wallet } from './utils'
 import { useState, useEffect, useRef } from 'react'
 import { getPriorityConnector } from '@web3-react/core'
 import create from 'zustand'
