@@ -7,7 +7,7 @@
 
 </div>
 
-Simple Web3 wallet modal library.
+Simple Web3 wallet modal library based on web3-react.
 
 ## Install
 
@@ -15,40 +15,13 @@ Simple Web3 wallet modal library.
 pnpm i w3r-modal react @web3-react/core @web3-react/types
 ```
 
-## Example
+## Get Started
 
-```jsx
-import { Web3ReactHooks } from '@web3-react/core'
-import { Connector } from '@web3-react/types'
-import { Modal, initWalletHooks } from 'w3r-modal'
-import { wallets } from './wallets'
+Visit https://w3r-modal.vercel.app/docs/get-started to get started with w3r-modal.
 
-const { useWalletModal } = initWalletHooks({ wallets })
+## Docs
 
-export default function Page() {
-  const { isConnected, isConnecting, setConnecting, connect, disconnect, address, error, connector, chainId, ens } =
-    useWalletModal()
-
-  return (
-    <>
-      <button
-        onClick={async () => {
-          if (isConnected) disconnect()
-          else setConnecting(true)
-        }}
-      >
-        {isConnected ? 'disconnect' : 'connect'}
-      </button>
-      {isConnected ? (
-        <p>
-          Connected to {ens || address.slice(0, 8)} with {connector.constructor.name} on chain {chainId}
-        </p>
-      ) : null}
-      {isConnecting && <Modal {...{ isConnecting, setConnecting, connect, wallets }} />}
-    </>
-  )
-}
-```
+Visit https://w3r-modal.vercel.app/docs/api to view API docs.
 
 [v-badge-url]: https://img.shields.io/npm/v/w3r-modal.svg?style=for-the-badge&color=E58EAB&label=&logo=npm
 [npm-url]: https://www.npmjs.com/package/w3r-modal
