@@ -54,13 +54,15 @@ import type { AppProps } from 'next/app'
 import 'w3r-modal/index.css'
 import { cssStringFromTheme, defaultTheme } from 'w3r-modal'
 
+const theme = cssStringFromTheme(defaultTheme)
+
 const App = ({ pageProps, Component }) => {
   return (
     <>
       <style jsx global>
         {`
           :root {
-            ${cssStringFromTheme(defaultTheme)}
+            ${theme}
           }
         `}
       </style>
