@@ -18,7 +18,7 @@ const App = ({ pageProps, Component }: AppProps) => {
         <meta property="og:type" content="website" />
         <meta property="og:image" content="/preview.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image" content="http://www.genie.xyz/preview.png" />
+        <meta name="twitter:image" content="/preview.jpg" />
         <meta property="og:description" content="Simple Web3 wallet modal library based on web3-react." />
       </Head>
       <style jsx global>
