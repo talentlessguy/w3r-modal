@@ -6,11 +6,23 @@ import { persist } from 'zustand/middleware'
 import type { Provider } from '@web3-react/types'
 
 type State = {
+  /**
+   * Last saved wallet with name and icon
+   */
   lastWallet: { name: string; logoURI?: string }
+  /**
+   * Save a wallet to storage
+   */
   setLastWallet: (w: { name: string; logoURI?: string }) => void
+  /**
+   * Remove a wallet from storage
+   */
   resetWallet: () => void
 }
 
+/**
+ * Zustand hook with last saved wallet.
+ */
 export const useLastWallet = create(
   persist<State>(
     (set) => ({

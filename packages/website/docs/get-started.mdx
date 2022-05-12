@@ -77,7 +77,7 @@ export default App
 Now the library is ready to use! Initialize `w3r-modal` hooks in your app:
 
 ```jsx
-import { Modal, initWalletHooks } from 'w3r-modal'
+import { Modal, initWalletHooks, useLastWallet } from 'w3r-modal'
 import { useMemo } from 'react'
 import { wallets } from '../wallets'
 
@@ -85,6 +85,7 @@ const { useWalletModal } = initWalletHooks({ wallets })
 
 export default function Page() {
   const { isConnected, isConnecting, setConnecting, connect, disconnect, address, connector, ens } = useWalletModal()
+  const wallet = useLastWallet((s) => s.lastWallet)
 
   return (
     <main>
@@ -98,7 +99,7 @@ export default function Page() {
       </button>
       {isConnected ? (
         <p>
-          Connected to {ens || address.slice(0, 8)} with {connector.constructor.name}
+          Connected to {ens || address.slice(0, 8)} with {wallet.name}
         </p>
       ) : null}
 

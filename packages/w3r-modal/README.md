@@ -12,7 +12,7 @@ Simple Web3 wallet modal library based on web3-react.
 ## Install
 
 ```sh
-pnpm i w3r-modal react @web3-react/core @web3-react/types
+pnpm i react w3r-modal @web3-react/core@beta @web3-react/types@beta
 ```
 
 ## Get Started

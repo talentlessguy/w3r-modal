@@ -92,8 +92,23 @@ import { useLastWallet } from 'w3r-modal'
 
 export default function Page() {
   const { isConnected } = useWeb3State()
-  const wallet = useLastWallet()
+  const wallet = useLastWallet((s) => s.lastWallet)
 
   return <>{isConnected ? <>{wallet.name}</> : 'N/A'}</>
+}
+```
+
+You can also manually save a wallet:
+
+```jsx
+import { useLastWallet } from 'w3r-modal'
+
+export default function Page() {
+  const { isConnected } = useWeb3State()
+  const setLastWallet = useLastWallet((s) => s.setLastWallet)
+
+  return (
+    <>{isConnected ? <button onClick={() => setLastWallet({ name: 'MetaMask' })}>Remember MetaMask</button> : 'N/A'}</>
+  )
 }
 ```
