@@ -9,7 +9,12 @@ export const wallets: Wallet[] = [
   },
   {
     name: 'WalletConnect',
-    connector: connectors[1],
+    connector: connectors[2],
     logoURI: 'https://www.genie.xyz/logos/wc.png'
+  },
+  {
+    name: 'Coinbase',
+    connector: connectors[1],
+    logoURI: 'https://www.genie.xyz/logos/walletlink.png'
   }
 ]
