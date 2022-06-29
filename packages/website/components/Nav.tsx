@@ -16,7 +16,7 @@ export const Nav = () => {
       <Link href="/docs/api">
         <a className={styles.link}>API</a>
       </Link>
-      <a className={styles.link} href="https://github.com/talentlessguy/w3r-modal" target="_blank" rel="noreferer">
+      <a className={styles.link} href="https://github.com/talentlessguy/w3r-modal" target="_blank" rel="noreferer noreferrer">
         Source
       </a>
     </nav>

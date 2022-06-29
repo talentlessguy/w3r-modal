@@ -1,4 +1,4 @@
-import React, { Dispatch, useCallback, useEffect, useRef, useState } from 'react'
+import { Dispatch, useCallback, useEffect, useRef, useState } from 'react'
 import { Dialog } from './Dialog'
 import * as styles from './Modal.css'
 import { CloseIcon } from './icons'
@@ -23,7 +23,7 @@ export interface ModalProps {
   wallets: Wallet[]
 }
 
-const WalletIcon = ({ connect, wallet }: { wallet: Wallet } & Partial<Pick<ModalProps, 'connect'>>) => {
+const WalletIcon = ({ connect, wallet }: { wallet: Wallet } & Pick<ModalProps, 'connect'>) => {
   return (
     <li key={wallet.name}>
       <button
@@ -44,18 +44,20 @@ const WalletIcon = ({ connect, wallet }: { wallet: Wallet } & Partial<Pick<Modal
   )
 }
 
+const titleId = 'w3r_modal'
+
 /**
  * Basic Web3 Modal
  */
 export const Modal = ({ classNames, connect, isConnecting, setConnecting, wallets }: ModalProps) => {
   const initialFocusRef = useRef<HTMLHeadingElement | null>(null)
-  const titleId = 'w3r_modal'
 
   const stopConnecting = useCallback(() => setConnecting(false), [setConnecting])
 
   const [isMetaMaskSupported, setMetaMaskSupported] = useState(true)
 
   useEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     setMetaMaskSupported(!!(window as any).ethereum)
   }, [])
 

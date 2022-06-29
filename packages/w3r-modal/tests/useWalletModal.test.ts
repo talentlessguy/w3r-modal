@@ -1,42 +1,38 @@
-import { suite } from 'uvu'
-import * as assert from 'assert/strict'
 import { act, renderHook } from '@testing-library/react'
-import { MOCK_ADDRESS, wallets, setup, reset, MockEIP1193Provider } from '../testUtils'
+import { MOCK_ADDRESS, wallets, setup, MockEIP1193Provider } from '../testUtils'
 import { initWalletHooks } from '../src/useWalletModal'
+import { describe, it, beforeAll, afterAll, expect } from 'vitest'
 
 const { useWalletModal } = initWalletHooks({ wallets })
 
-const t = suite('useWalletModal')
+beforeAll(setup)
+afterAll(setup)
 
-t.before(setup)
-t.after(reset)
+describe('useWalletModal', () => {
+  it('Set "isConnecting" to false after connected and state gets filled', async () => {
+    const { result } = renderHook(() => useWalletModal())
 
-t('Set "isConnecting" to false after connected and state gets filled', async () => {
-  const { result } = renderHook(() => useWalletModal())
+    const web3 = window.ethereum as MockEIP1193Provider
+    web3.eth_chainId('0x1')
 
-  const web3 = window.ethereum as MockEIP1193Provider
-  web3.eth_chainId('0x1')
+    act(() => {
+      result.current.setConnecting(true)
+    })
 
-  act(() => {
-    result.current.setConnecting(true)
-  })
+    expect(result.current.isConnecting).toEqual(true)
 
-  assert.equal(result.current.isConnecting, true)
+    web3.eth_requestAccounts([MOCK_ADDRESS])
 
-  web3.eth_requestAccounts([MOCK_ADDRESS])
+    await act(async () => {
+      await result.current.connect(wallets[0], { chainId: 1 })
+    })
 
-  await act(async () => {
-    await result.current.connect(wallets[0], { chainId: 1 })
-  })
+    expect(result.current.address, 'address').toEqual(MOCK_ADDRESS)
+    expect(result.current.chainId, 'chainId').toEqual(1)
+    expect(result.current.isConnected, 'isConnected').toEqual(true)
 
-  assert.equal(result.current.address, MOCK_ADDRESS, 'address')
-  assert.equal(result.current.chainId, 1, 'chainId')
-  assert.equal(result.current.isConnected, true, 'isConnected')
-  assert.equal(result.current.isConnecting, false, 'isConnecting')
-
-  await act(async () => {
-    await result.current.disconnect()
+    await act(async () => {
+      await result.current.disconnect()
+    })
   })
 })
-
-t.run()

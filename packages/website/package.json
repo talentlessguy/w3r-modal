@@ -30,7 +30,6 @@
     "zustand": "4.0.0-rc.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.29",
     "@types/react": "^18.0.8"
   }
 }

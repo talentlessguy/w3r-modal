@@ -1,5 +1,5 @@
-/* eslint-disable sort-keys-fix/sort-keys-fix */
 import { createGlobalThemeContract } from '@vanilla-extract/css'
+import { ThemeVars } from '@vanilla-extract/css/dist/declarations/src/types'
 import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles'
 
 import './reset.css'
@@ -22,7 +22,7 @@ export const defaultTheme = {
 
 export type Theme = typeof defaultTheme
 
-export const themeVars = createGlobalThemeContract(defaultTheme, (_, path) => `w3r-${path.join('-')}`)
+export const themeVars: ThemeVars<Theme> = createGlobalThemeContract(defaultTheme, (_, path) => `w3r-${path.join('-')}`)
 
 type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>

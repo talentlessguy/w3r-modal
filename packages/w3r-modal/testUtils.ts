@@ -2,7 +2,7 @@ import { initializeConnector, Web3ReactHooks } from '@web3-react/core'
 import { MetaMask } from '@web3-react/metamask'
 import { Connector, ProviderRpcError, RequestArguments } from '@web3-react/types'
 import { WalletConnect } from '@web3-react/walletconnect'
-import { Wallet } from './src/utils/wallets'
+import { Wallet } from './src/utils'
 import { JSDOM } from 'jsdom'
 import { EventEmitter } from 'node:events'
 
@@ -17,7 +17,7 @@ export class MockEIP1193Provider extends EventEmitter {
   accounts?: string[]
 
   eth_chainId = (chainId: string) => (this.chainId = chainId)
-  eth_accounts = (accounts: string[]) => this.accounts
+  eth_accounts = (_accounts: string[]) => this.accounts
   eth_requestAccounts = (accounts: string[]) => (this.accounts = accounts)
 
   request(x: RequestArguments): Promise<unknown> {
@@ -60,13 +60,7 @@ export class MockEIP1193Provider extends EventEmitter {
 }
 
 export function setup() {
-  // @ts-ignore
-  global.window = window
   global.window.ethereum = new MockEIP1193Provider()
-  global.document = window.document
-  global.navigator = window.navigator
-  global.getComputedStyle = window.getComputedStyle
-  global.requestAnimationFrame = null
 }
 
 export function reset() {

@@ -1,7 +1,7 @@
 import { clsx } from './clsx'
 import React, { forwardRef, MouseEventHandler, ReactNode, RefObject, useCallback, useEffect, useRef } from 'react'
 import { createPortal } from 'react-dom'
-import mergeRefs from 'react-merge-refs'
+import { mergeRefs } from 'react-merge-refs'
 import * as styles from './Dialog.css'
 
 const moveFocusWithin = (element: HTMLElement, position: 'start' | 'end') => {
@@ -58,7 +58,7 @@ export const Dialog = forwardRef<HTMLDivElement, DialogProps>(
       initialFocusRef?.current?.focus()
 
       return () => {
-        ;(previouslyActiveElement as HTMLElement).focus?.()
+        (previouslyActiveElement as HTMLElement).focus?.()
       }
     }, [initialFocusRef])
 

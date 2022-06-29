@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from 'react'
 import { getPriorityConnector } from '@web3-react/core'
 import create from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { Provider } from '@web3-react/types'
+import { BaseProvider } from '@ethersproject/providers'
 
 type State = {
   /**
@@ -56,7 +56,7 @@ export const initWalletHooks = ({
 }: {
   wallets: Wallet[]
   autoConnect?: boolean
-  ensProvider?: Provider
+  ensProvider?: BaseProvider
 }) => {
   const {
     usePriorityConnector,
@@ -89,7 +89,7 @@ export const initWalletHooks = ({
     const address = useSelectedAccount(connector)
     const isConnected = useSelectedIsActive(connector)
     const provider = useSelectedProvider(connector)
-    const ens = useSelectedENSName(connector, (ensProvider as any) || provider)
+    const ens = useSelectedENSName(connector, ensProvider || provider)
     const isActivating = useSelectedIsActivating(connector)
 
     const disconnect = async () => {
