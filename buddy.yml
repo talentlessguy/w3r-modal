@@ -23,7 +23,7 @@
         - "./codecov"
       setup_commands:
         - "corepack enable"
-        - "corepack prepare pnpm@7.0.0 --activate"
+        - "corepack prepare pnpm@7.4.0 --activate"
         - "curl -Os https://uploader.codecov.io/latest/linux/codecov"
         - "chmod +x codecov"
       volume_mappings:
