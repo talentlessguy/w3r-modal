@@ -20,12 +20,13 @@
         - "pnpm test:coverage"
         - "pnpm test:report"
         - "cd ../.."
+        - "curl -Os https://uploader.codecov.io/latest/linux/codecov"
+        - "chmod +x codecov"
         - "./codecov"
       setup_commands:
         - "corepack enable"
         - "corepack prepare pnpm@7.4.0 --activate"
-        - "curl -Os https://uploader.codecov.io/latest/linux/codecov"
-        - "chmod +x codecov"
+
       volume_mappings:
         - "/:/buddy/w3r-modal"
       cache_base_image: true
