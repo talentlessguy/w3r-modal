@@ -20,7 +20,7 @@ export const vanillaExtract = ({ identifiers = 'debug' } = {}) =>
 export const externals = {
   name: 'make-all-packages-external',
   setup(build) {
-    let filter = /^[^./]|^\.[^./]|^\.\.[^/]/ // Must not start with "/" or "./" or "../"
+    const filter = /^[^./]|^\.[^./]|^\.\.[^/]/ // Must not start with "/" or "./" or "../"
     build.onResolve({ filter }, (args) => ({ external: true, path: args.path }))
   }
 }

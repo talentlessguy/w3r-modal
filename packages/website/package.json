@@ -10,6 +10,7 @@
   "type": "module",
   "dependencies": {
     "@coinbase/wallet-sdk": "^3.0.12",
+    "@ethersproject/providers": "^5.6.5",
     "@fontsource/chivo": "^4.5.7",
     "@fontsource/fira-code": "^4.5.9",
     "@stefanprobst/remark-shiki": "^2.1.0",

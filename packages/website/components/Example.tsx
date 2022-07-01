@@ -5,6 +5,7 @@ import { useWalletModal } from '../hooks'
 import { wallets } from '../wallets'
 import { useLastWallet } from 'w3r-modal'
 import type { ChainIdNotAllowedError } from '@web3-react/store'
+import { Web3Provider } from '@ethersproject/providers'
 
 export function Example(props: JSX.IntrinsicElements['div']) {
   const { isConnected, isConnecting, setConnecting, connect, disconnect, address, error, ens } = useWalletModal()
@@ -20,8 +21,7 @@ export function Example(props: JSX.IntrinsicElements['div']) {
         className={styles.button}
         onClick={async () => {
           if (isInvalidNetwork) {
-            // @ts-ignore
-            await window.ethereum?.send('wallet_switchEthereumChain', [
+            await (window.ethereum as Web3Provider)?.send('wallet_switchEthereumChain', [
               {
                 chainId: `0x1`
               }
